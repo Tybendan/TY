@@ -8,7 +8,7 @@ COPY backend/package*.json ./backend/
 COPY frontend/package*.json ./frontend/
 
 RUN cd backend && npm install --production
-RUN cd frontend && npm install
+RUN cd frontend && npx vite build
 
 COPY backend/src ./backend/src
 COPY frontend ./frontend
