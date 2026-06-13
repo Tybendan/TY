@@ -1,0 +1,39 @@
+[33mcommit eafafe3928721c0f999d1b51e5cb1e5a2baf1217[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: unknown <HN054@JET.com>
+Date:   Sat Jun 13 23:22:21 2026 +0800
+
+    initial commit: 员工培训管理系统
+
+ workspace/.gitignore                               |  176 [32m++[m
+ workspace/backend/data.db                          |  Bin [31m0[m -> [32m4096[m bytes
+ workspace/backend/data.db-shm                      |  Bin [31m0[m -> [32m32768[m bytes
+ workspace/backend/data.db-wal                      |  Bin [31m0[m -> [32m1812832[m bytes
+ workspace/backend/package-lock.json                | 1430 [32m++++++++++++++++[m
+ workspace/backend/package.json                     |   15 [32m+[m
+ workspace/backend/src/attendance-calc.js           |  107 [32m++[m
+ workspace/backend/src/db.js                        |  119 [32m++[m
+ workspace/backend/src/feishu-sync.js               |  160 [32m++[m
+ workspace/backend/src/index.js                     |   36 [32m+[m
+ workspace/backend/src/routes/assessments.js        |  156 [32m++[m
+ workspace/backend/src/routes/attendance.js         |  139 [32m++[m
+ workspace/backend/src/routes/employees.js          |  106 [32m++[m
+ workspace/backend/src/routes/holidays.js           |   32 [32m+[m
+ workspace/backend/src/routes/skill-levels.js       |  237 [32m+++[m
+ .../esd_attachment-1781350145698-136625389.pdf     |    1 [32m+[m
+ .../esd_attachment-1781350673797-226534303.pdf     |  Bin [31m0[m -> [32m7916882[m bytes
+ .../skill_attachment-1781351480536-857706891.pdf   |  Bin [31m0[m -> [32m7945614[m bytes
+ workspace/frontend/index.html                      |   12 [32m+[m
+ workspace/frontend/package-lock.json               | 1732 [32m++++++++++++++++++++[m
+ workspace/frontend/package.json                    |   21 [32m+[m
+ workspace/frontend/src/App.css                     |  405 [32m+++++[m
+ workspace/frontend/src/App.tsx                     |   68 [32m+[m
+ workspace/frontend/src/api.ts                      |  188 [32m+++[m
+ workspace/frontend/src/main.tsx                    |   10 [32m+[m
+ workspace/frontend/src/pages/AssessmentForm.tsx    |  492 [32m++++++[m
+ workspace/frontend/src/pages/SkillLevelForm.tsx    |  687 [32m++++++++[m
+ workspace/frontend/src/vite-env.d.ts               |    1 [32m+[m
+ workspace/frontend/tsconfig.json                   |   20 [32m+[m
+ workspace/frontend/vite.config.ts                  |   20 [32m+[m
+ workspace/package.json                             |   11 [32m+[m
+ workspace/start.sh                                 |   15 [32m+[m
+ 32 files changed, 6396 insertions(+)
