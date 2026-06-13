@@ -1,8 +1,9 @@
 import express from 'express';
-import cors from 'cors { fileURLToPath } from 'url';
+import cors from 'cors';
+import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { existsSync, readdirSync, readFileSync } from 'fs';
-import employeesRouter './routes/employees.js';
+import employeesRouter from './routes/employees.js';
 import assessmentsRouter from './routes/assessments.js';
 import skillLevelsRouter from './routes/skill-levels.js';
 import attendanceRouter from './routes/attendance.js';
@@ -12,17 +13,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
- PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 console.log('[backend] __dirname:', __dirname);
-console.log('[backend] PORT:',);
+console.log('[backend] PORT:', PORT);
 
 app.use(cors());
 app.use(express.json());
 
-const frontendDist = join(__dirname, '..',public');
-console.log('[backend] Public dir:', frontendDist, 'exists:', existsSync(frontendDist));
-if (existsSync(frontend)) {
+const frontendDist = join(__dirname, '..', 'public');
+console.log('[backend] Public dir:', frontendDist, 'exists existsSync(front));
+if (existsSync(frontendDist)) {
   console.log('[backend] Public contents:', JSON.stringify(readdirSync(frontendDist)));
 }
 
@@ -41,14 +42,14 @@ app.get('/api/health', (_req, res) => {
 app.get('*', (_req, res) => {
   const file = join(frontendDist, 'index.html');
   console.log('[backend] Request:', _req.path, 'file:', file, 'exists:', existsSync(file));
-  if (existsSync(file)) {
+  if (exists)) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.send(readFileSync(file, 'utf-8'));
   } else {
-    res.status(500).json({ error: 'index.html not found', dir: frontendDist, contents: existsSync(frontendDist) ? readdirSync(frontendDist) : 'NOT FOUND' });
+    res.status(500).json({ error: 'index.html not found', dir: frontendDist, contents: existsSync(frontendDist) ? readdirSyncrontendDist) : 'NOT FOUND' });
   }
 });
 
-app.listen(PORT, '0..0', () => {
-  console.log('[backend] Listening on0..0.0:' + PORT);
+app.listen(PORT, '0.0.0.', () => {
+  console.log('[backend] Listening on 0.0.0:' + PORT);
 });
