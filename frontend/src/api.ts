@@ -35,6 +35,8 @@ export interface Employee {
   marital_status?: string;
   shoe_size?: string;
   clothing_size?: string;
+  entry_date?: string;
+  team?: string;
   created_at: string;
 }
 

@@ -29,6 +29,8 @@ db.exec(`
     marital_status TEXT,
     shoe_size TEXT,
     clothing_size TEXT,
+    entry_date TEXT,
+    team TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 
@@ -115,5 +117,7 @@ safeAlter('employees', 'emergency_contact', 'TEXT');
 safeAlter('employees', 'marital_status', 'TEXT');
 safeAlter('employees', 'shoe_size', 'TEXT');
 safeAlter('employees', 'clothing_size', 'TEXT');
+safeAlter('employees', 'entry_date', 'TEXT');
+safeAlter('employees', 'team', 'TEXT');
 
 export default db;

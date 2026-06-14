@@ -332,6 +332,101 @@ body {
 .rule-dot.green { background: var(--success); }
 .rule-dot.orange { background: var(--warning); }
 
+.rule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.rule-table th {
+  background: #e8f0fe;
+  color: var(--gray-800);
+  font-weight: 600;
+  padding: 8px 12px;
+  text-align: left;
+  border: 1px solid var(--gray-200);
+}
+.rule-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--gray-200);
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+.rule-table tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+.rule-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.rule-box-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.rule-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+
+.step-badge {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.step-25 { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+.step-50 { background: linear-gradient(135deg, #60a5fa, #2563eb); }
+.step-75 { background: linear-gradient(135deg, #34d399, #059669); }
+.step-100 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+.step-text {
+  padding-top: 7px;
+}
+
+.rule-item-modern {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+
+.rule-dot-modern {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: 6px;
+}
+
+.rule-dot-modern.warn { background: var(--warning); }
+.rule-dot-modern.danger { background: var(--danger); }
+.rule-dot-modern.info { background: var(--primary); }
+.rule-dot-modern.success { background: var(--success); }
+
 /* Inline record list */
 .inline-records {
   display: flex;

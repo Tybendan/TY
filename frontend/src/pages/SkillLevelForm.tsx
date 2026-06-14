@@ -360,20 +360,66 @@ export default function SkillLevelForm({ adminToken }: Props) {
     <div>
       {msg && <div className={`msg msg-${msg.type}`}>{msg.text}</div>}
 
-      <div className="rule-card">
-        <h3>内置管理规则</h3>
-        <div className="rule-grid">
-          <div className="rule-item"><span className="rule-dot blue"></span> 普通岗: 连续7天在岗 25% → 50%</div>
-          <div className="rule-item"><span className="rule-dot blue"></span> 重点岗: 连续10天在岗 25% → 50%</div>
-          <div className="rule-item"><span className="rule-dot green"></span> 50% → 75%: 连续30天, 缺勤中断重置</div>
-          <div className="rule-item"><span className="rule-dot green"></span> 75% → 100%: 连续60天, 缺勤中断重置</div>
-          <div className="rule-item"><span className="rule-dot orange"></span> 离岗≥7天: 连续在岗清零, 晋升进度重置(节假日不计)</div>
-          <div className="rule-item"><span className="rule-dot orange"></span> 离岗满3个月: 等级归零</div>
-          <div className="rule-item"><span className="rule-dot orange"></span> 普通岗: 考核通过日期起有效期1年</div>
-          <div className="rule-item"><span className="rule-dot orange"></span> 重点岗: 考核通过日期起有效期半年(6个月)</div>
-          <div className="rule-item"><span className="rule-dot orange"></span> 到期前30天可复核通过，更新日期重新计算有效期</div>
-          <div className="rule-item"><span className="rule-dot blue"></span> 每个岗位独立打卡，仅计算本岗位连续在岗天数</div>
-          <div className="rule-item"><span className="rule-dot green"></span> 连续在岗/离岗天数/最后在岗日期由打卡自动计算</div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginBottom: 20 }}>
+        <div className="rule-box" style={{ borderTop: '3px solid var(--primary)' }}>
+          <div className="rule-box-title">晋升规则</div>
+          <div className="rule-step">
+            <span className="step-badge step-25">25%</span>
+            <span className="step-text">新员工首次上岗默认初始等级</span>
+          </div>
+          <div className="rule-step">
+            <span className="step-badge step-50">50%</span>
+            <span className="step-text">普通岗连续在岗 7 天 / 重点岗 10 天</span>
+          </div>
+          <div className="rule-step">
+            <span className="step-badge step-75">75%</span>
+            <span className="step-text">从 50% 起连续在岗 30 天</span>
+          </div>
+          <div className="rule-step">
+            <span className="step-badge step-100">100%</span>
+            <span className="step-text">从 75% 起连续在岗 60 天</span>
+          </div>
+        </div>
+
+        <div className="rule-box" style={{ borderTop: '3px solid var(--warning)' }}>
+          <div className="rule-box-title">清零规则</div>
+          <div className="rule-item-modern">
+            <span className="rule-dot-modern warn"></span>
+            <span>离岗超 7 天，重新计算在岗时长</span>
+          </div>
+          <div className="rule-item-modern">
+            <span className="rule-dot-modern danger"></span>
+            <span>离岗满 3 个月，等级归零</span>
+          </div>
+          <div className="rule-box-title" style={{ marginTop: 16 }}>打卡说明</div>
+          <div className="rule-item-modern">
+            <span className="rule-dot-modern info"></span>
+            <span>每个岗位独立打卡计算</span>
+          </div>
+          <div className="rule-item-modern">
+            <span className="rule-dot-modern info"></span>
+            <span>离岗天数自动排除节假日</span>
+          </div>
+        </div>
+
+        <div className="rule-box" style={{ borderTop: '3px solid var(--success)' }}>
+          <div className="rule-box-title">有效期</div>
+          <div className="rule-item-modern">
+            <span className="rule-dot-modern success"></span>
+            <span>普通岗 1 年</span>
+          </div>
+          <div className="rule-item-modern">
+            <span className="rule-dot-modern success"></span>
+            <span>重点岗 6 个月</span>
+          </div>
+          <div className="rule-item-modern">
+            <span className="rule-dot-modern success"></span>
+            <span>到期前 30 天可复核续期</span>
+          </div>
+          <div className="rule-item-modern">
+            <span className="rule-dot-modern success"></span>
+            <span>到期未复核自动失效</span>
+          </div>
         </div>
       </div>
 

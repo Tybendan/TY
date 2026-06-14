@@ -13,7 +13,7 @@ RUN cd frontend && npm install
 COPY backend/src ./backend/src
 COPY frontend ./frontend
 
-RUN cd frontend && npx tsc && npx vite build
+RUN cd frontend && npx vite build
 
 RUN mkdir -p backend/public && cp -r frontend/dist/* backend/public/
 

@@ -34,6 +34,8 @@ export default function AssessmentForm({ adminToken }: Props) {
     marital_status: '',
     shoe_size: '',
     clothing_size: '',
+    entry_date: '',
+    team: '',
   });
 
   const [files, setFiles] = useState<{ esd?: File; esh?: File; entry?: File }>({});
@@ -65,9 +67,12 @@ export default function AssessmentForm({ adminToken }: Props) {
     for (const f of fields) {
       if ((form as any)[f]) sensitiveData[f] = (form as any)[f];
     }
+    const basicData: Record<string, string> = {};
+    if (form.entry_date) basicData.entry_date = form.entry_date;
+    if (form.team) basicData.team = form.team;
     if (!exists) {
       try {
-        await api.createEmployee({ employee_id: form.employee_id, name: form.name, ...sensitiveData });
+        await api.createEmployee({ employee_id: form.employee_id, name: form.name, ...basicData, ...sensitiveData });
         const updated = await api.getEmployees();
         setEmployees(updated);
       } catch (e: any) {
@@ -79,6 +84,7 @@ export default function AssessmentForm({ adminToken }: Props) {
     } else {
       const updates: Record<string, string> = {};
       if (exists.name !== form.name) updates.name = form.name;
+      Object.assign(updates, basicData);
       Object.assign(updates, sensitiveData);
       if (Object.keys(updates).length > 0) {
         await api.updateEmployee(form.employee_id, updates).catch(() => {});
@@ -140,6 +146,7 @@ export default function AssessmentForm({ adminToken }: Props) {
       esh_team_result: '', esh_dept_result: '', esh_company_result: '', entry_result: '',
       education: '', birth_date: '', id_card: '', ethnicity: '', hukou_address: '',
       current_address: '', phone: '', emergency_contact: '', marital_status: '', shoe_size: '', clothing_size: '',
+      entry_date: '', team: '',
     });
     setFiles({});
     setEditingId(null);
@@ -254,6 +261,18 @@ export default function AssessmentForm({ adminToken }: Props) {
                   const found = employees.find(emp => emp.employee_id === form.employee_id);
                   if (found) setField('name', found.name);
                 }} />
+            </div>
+
+            <div className="form-group">
+              <label>入职时间</label>
+              <input type="date" value={form.entry_date}
+                onChange={e => setField('entry_date', e.target.value)} />
+            </div>
+
+            <div className="form-group">
+              <label>班组</label>
+              <input type="text" value={form.team} placeholder="如: A班/B班/甲班"
+                onChange={e => setField('team', e.target.value)} />
             </div>
           </div>
 

@@ -5,6 +5,7 @@ import { syncAllForEmployee } from '../feishu-sync.js';
 const router = Router();
 
 const SENSITIVE_FIELDS = ['education', 'birth_date', 'id_card', 'ethnicity', 'hukou_address', 'current_address', 'phone', 'emergency_contact', 'marital_status', 'shoe_size', 'clothing_size'];
+const BASIC_FIELDS = ['entry_date', 'team'];
 
 function isAdmin(req) {
   const token = req.headers['x-admin-token'];
@@ -55,7 +56,19 @@ router.post('/', (req, res) => {
     const admin = isAdmin(req);
     const fields = ['employee_id', 'name'];
     const values = [employee_id, name];
-    for (const f of SENSITIVE_FIELDS) {
+    for (const f of BASIC_FIELDS) {
+      if (rest[f] !== undefined) {
+        fields.push(f);
+        values.push(rest[f]);
+      }
+    }
+  for (const f of BASIC_FIELDS) {
+    if (rest[f] !== undefined) {
+      db.prepare(`UPDATE employees SET ${f} = ? WHERE employee_id = ?`).run(rest[f], req.params.employeeId);
+    }
+  }
+
+  for (const f of SENSITIVE_FIELDS) {
       if (rest[f] !== undefined) {
         if (!admin) return res.status(403).json({ error: `无权设置 ${f} 字段，需要管理员权限` });
         fields.push(f);

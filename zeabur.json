@@ -1,0 +1,12 @@
+{
+  "build": {
+    "command": "cd backend && npm install && cd ../frontend && npm install && npm run build"
+  },
+  "start": {
+    "command": "cd backend && npm start"
+  },
+  "healthCheck": {
+    "path": "/api/health",
+    "port": 3001
+  }
+}
